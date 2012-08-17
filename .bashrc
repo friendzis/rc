@@ -100,10 +100,10 @@ PS1="\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\$ "
 # Aliases
 #
 
-export LS_OPTIONS='--color=auto'	# Make ls pretty!
+export LS_OPTIONS='--color=auto --group-directories-first'	# Make ls pretty!
 eval "`dircolors`"
 alias ls='pwd; ls $LS_OPTIONS'		# Since PS1 only contains short directory always display full path here
-alias ll='ls -l'
-alias la=';s -lA'
+alias ll='ls -lh'			# Display sizes human-readable
+alias la='ll -A'
 alias grep='grep $LS_OPTIONS'
-alias mkdir='mkdir -p'			# silently create parent directories
+alias mkdir='mkdir -p'			# Silently create parent directories
