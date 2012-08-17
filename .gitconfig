@@ -2,8 +2,14 @@
 	name	= friendzis
 	email	= me@friendzis.net
 
+[color]
+	ui	= true
+	branch	= auto
+	diff	= auto
+	status	= auto
+
 [color "status"]
-	untracked	= grey
+	untracked	= cyan
 	unchanged	= green
-	changed		= red
-	added		= yellow
+	changed		= red reverse
+	added		= yellow reverse
