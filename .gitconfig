@@ -1,0 +1,9 @@
+[user]
+	name	= friendzis
+	email	= me@friendzis.net
+
+[color "status"]
+	untracked	= grey
+	unchanged	= green
+	changed		= red
+	added		= yellow
