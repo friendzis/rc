@@ -13,3 +13,9 @@
 	unchanged	= green
 	changed		= red reverse
 	added		= yellow reverse
+
+[alias]
+	st = status
+	ci = commit -a
+	co = checkout
+	lg = log --oneline --graph --decorate -n 10
