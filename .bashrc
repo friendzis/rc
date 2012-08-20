@@ -90,10 +90,12 @@ BGWHITE='\e[107m'
 #
 
 # The shell prompt
-#PS1='\h\e[m:\e[1;36m\W\e[m\$ '
-PS1="\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\$ "
 # A bit different for root
-#PS1="\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\[$BGRED\]\[$bblack\]\$\[$NC\] "
+if [ "$UID" = 0 ]; then
+	PS1="\[$bgblue\]\[$BWHITE\]\u\[$NC\]\[$BGREEN\]@\[$NC\]\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\[$BGRED\]\[$bblack\]\$\[$NC\] "
+else
+	PS1="\[$BGREEN\]\u@\[$NC\]\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\$ "
+fi
 
 
 # *****************************************************************************
@@ -105,5 +107,16 @@ eval "`dircolors`"
 alias ls='pwd; ls $LS_OPTIONS'		# Since PS1 only contains short directory always display full path here
 alias ll='ls -lh'			# Display sizes human-readable
 alias la='ll -A'
-alias grep='grep $LS_OPTIONS'
+alias grep='grep --color=auto'
 alias mkdir='mkdir -p'			# Silently create parent directories
+
+# *****************************************************************************
+# Convenience
+#
+#export LESS_TERMCAP_mb=$'\E[01;31m'
+#export LESS_TERMCAP_md=$'\E[01;31m'
+#export LESS_TERMCAP_me=$'\E[0m'
+#export LESS_TERMCAP_se=$'\E[0m'                           
+#export LESS_TERMCAP_so=$'\E[01;44;33m'                                 
+#export LESS_TERMCAP_ue=$'\E[0m'
+#export LESS_TERMCAP_us=$'\E[01;32m'

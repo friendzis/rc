@@ -1,0 +1,4 @@
+xterm*borderWidth:	0
+xterm*scrollBar:	off
+xterm*background:	black
+xterm*foreground:	green
