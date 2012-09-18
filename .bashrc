@@ -1,7 +1,7 @@
 # *****************************************************************************
 # Colors
 #
-# This part is partially taken from Arch Linux communty wiki
+# This part is partially borrowed from Arch Linux communty wiki
 
 NC='\e[0m'		# No Color
 
@@ -86,10 +86,10 @@ BGCYAN='\e[106m'
 BGWHITE='\e[107m'
 
 # *****************************************************************************
-# Formats
+# Display formats
 #
 
-# The shell prompt
+# The main shell prompt
 # A bit different for root
 if [ "$UID" = 0 ]; then
 	PS1="\[$bgblue\]\[$BWHITE\]\u\[$NC\]\[$BGREEN\]@\[$NC\]\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\[$BGRED\]\[$bblack\]\$\[$NC\] "
@@ -97,6 +97,14 @@ else
 	PS1="\[$BGREEN\]\u@\[$NC\]\[$BRED\]\h\[$white\]:\[$BCYAN\]\W\[$NC\]\$ "
 fi
 
+# Secondary (extended) shell prompt
+PS2="> "
+
+# 
+#PS3="#?"
+
+# Script trace (debug) shell prompt
+PS4='[$LINENO]> '
 
 # *****************************************************************************
 # Aliases
@@ -109,6 +117,17 @@ alias ll='ls -lh'			# Display sizes human-readable
 alias la='ll -A'
 alias grep='grep --color=auto'
 alias mkdir='mkdir -p'			# Silently create parent directories
+
+# *****************************************************************************
+# Shell interaction
+#
+export VISUAL=vim	# Use vim as an editor
+export EDITOR=vim	# Fall back to... vim 
+
+# *****************************************************************************
+# Locations
+#
+export PATH=~/bin:~/bin/eclipse:$PATH
 
 # *****************************************************************************
 # Convenience
