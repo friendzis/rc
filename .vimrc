@@ -40,7 +40,7 @@ set autoindent		" Keep indentation on <LF> (default behaviour for IDEs)
 " *************************************************************************************************************************************
 " Search/RegEx settings
 "
-set incsearch	" Search for previous string when empty (incremental search)
+set incsearch		" Show search results while typing (incremental search)
 set ignorecase		" Ignore case when search string is in camelcase
 set smartcase		" but do not for Camelcase/camelCase/etc.
 
