@@ -127,7 +127,7 @@ export EDITOR=vim	# Fall back to... vim
 # *****************************************************************************
 # Locations
 #
-export PATH=~/bin:~/bin/eclipse:$PATH
+export PATH=~/bin:$PATH
 
 # *****************************************************************************
 # Convenience
