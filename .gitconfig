@@ -3,7 +3,7 @@
 	email	= me@friendzis.net
 
 [push]
-	default	= current
+	default	= current	# Push the current branch if not told otherwise
 
 [color]
 	ui	= true
