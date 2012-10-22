@@ -23,7 +23,8 @@ endif
 "
 set backspace=indent,eol,start		" Allow backspacing over everything
 set cursorline				" Highlight current line
-set ruler				" Sow cursor position
+set ruler				" Show bottom status-bar
+set rulerformat=%55(%{strftime('%Y-%m-%d\ %H:%M\ %Z')}\ %5l,%-6(%c%V%)\ %P%)	" Show time continental europe format
 set showmatch				" Display maching brackets/braces
 set matchtime=20			" Time in ms to show actual match
 set textwidth=135			" Screw 80 col terminals, I have some screen real estate
