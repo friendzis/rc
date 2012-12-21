@@ -68,6 +68,3 @@ endif
 " *************************************************************************************************************************************
 " Plugins
 "
-if filereadable(expand("~/.vim/colors/colorize.vim"))
-	source ~/.vim/colors/colorize.vim
-endif
