@@ -34,9 +34,9 @@ set colorcolumn=+1				" Highlight column # ${textwidth}+1
 " Whitespace settings
 "
 set autoindent					" Keep indentation on <LF> (default behaviour for IDEs)
-"set softtabstop=4				" Indent = 4 spaces (tab key)
-"set softtabstop=4				" Indent = 4 spaces (autoindent)
-"set expandtab					" Tabs are always all-spaces
+set softtabstop=4				" Indent = 4 spaces (tab key)
+set softtabstop=4				" Indent = 4 spaces (autoindent)
+set expandtab					" Tabs are always all-spaces
 
 " *************************************************************************************************************************************
 " Search/RegEx settings
@@ -63,4 +63,11 @@ set undofile					" Preserve undo information across vim launches. Handy
 "
 if filereadable(expand("~/.vimrc.local"))
 	source ~/.vimrc.local
+endif
+
+" *************************************************************************************************************************************
+" Plugins
+"
+if filereadable(expand("~/.vim/colors/colorize.vim"))
+	source ~/.vim/colors/colorize.vim
 endif
