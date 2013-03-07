@@ -25,3 +25,9 @@
 [submodule ".vim/bundle/snipMate"]
 	path = .vim/bundle/snipMate
 	url = git://github.com/msanders/snipmate.vim.git
+[submodule ".vim/bundle/miniBufExplorer"]
+	path = .vim/bundle/miniBufExplorer
+	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule ".vim/bundle/taglist"]
+	path = .vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
