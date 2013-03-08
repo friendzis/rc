@@ -59,11 +59,14 @@ set undodir=~/.vim/undo				" Keep undo information here
 set undofile					" Preserve undo information across vim launches. Handy
 
 " *************************************************************************************************************************************
-" Allow for local overrides
+" Window/Buffer navigation
 "
-if filereadable(expand("~/.vimrc.local"))
-	source ~/.vimrc.local
-endif
+set winheight=30
+set winminheight=2
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " *************************************************************************************************************************************
 " Plugins
@@ -74,3 +77,10 @@ call pathogen#helptags()
 
 filetype plugin indent on
 syntax on
+
+" *************************************************************************************************************************************
+" Allow for local overrides
+"
+if filereadable(expand("~/.vimrc.local"))
+	source ~/.vimrc.local
+endif

@@ -31,3 +31,9 @@
 [submodule ".vim/bundle/taglist"]
 	path = .vim/bundle/taglist
 	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule ".vim/bundle/tagHighlight"]
+	path = .vim/bundle/tagHighlight
+	url = git://github.com/vim-scripts/TagHighlight.git
+[submodule ".vim/bundle/autotag"]
+	path = .vim/bundle/autotag
+	url = git://github.com/vim-scripts/AutoTag.git
