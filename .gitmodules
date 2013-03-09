@@ -49,3 +49,21 @@
 [submodule "editors/vim/.vim/bundle/python-mode"]
 	path = editors/vim/.vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "editors/vim/.vim/bundle/nerdtree"]
+	path = editors/vim/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "editors/vim/.vim/bundle/snipMate"]
+	path = editors/vim/.vim/bundle/snipMate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "editors/vim/.vim/bundle/miniBufExplorer"]
+	path = editors/vim/.vim/bundle/miniBufExplorer
+	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule "editors/vim/.vim/bundle/taglist"]
+	path = editors/vim/.vim/bundle/taglist
+	url = git://github.com/vim-scripts/taglist.vim.git
+[submodule "editors/vim/.vim/bundle/tagHighlight"]
+	path = editors/vim/.vim/bundle/tagHighlight
+	url = git://github.com/vim-scripts/TagHighlight.git
+[submodule "editors/vim/.vim/bundle/autotag"]
+	path = editors/vim/.vim/bundle/autotag
+	url = git://github.com/vim-scripts/AutoTag.git
