@@ -34,3 +34,18 @@
 [submodule ".vim/bundle/autotag"]
 	path = editors/vim/.vim/bundle/autotag
 	url = git://github.com/vim-scripts/AutoTag.git
+[submodule "editors/vim/.vim/bundle/surround"]
+	path = editors/vim/.vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "editors/vim/.vim/bundle/fugitive"]
+	path = editors/vim/.vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "editors/vim/.vim/bundle/supertab"]
+	path = editors/vim/.vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule "editors/vim/.vim/bundle/gundo"]
+	path = editors/vim/.vim/bundle/gundo
+	url = git://github.com/sjl/gundo.vim.git
+[submodule "editors/vim/.vim/bundle/python-mode"]
+	path = editors/vim/.vim/bundle/python-mode
+	url = git://github.com/klen/python-mode.git
