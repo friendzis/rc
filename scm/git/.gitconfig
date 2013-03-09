@@ -22,3 +22,4 @@
 	ci = commit -a
 	co = checkout
 	lg = log --oneline --graph --decorate -n 10
+	discard = !git stash save --keep-index && git stash drop

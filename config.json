@@ -1,0 +1,22 @@
+{
+    "install":{
+        "editors/vim/.vimrc":{
+            "type":"file",
+            "method":"link",
+            "destination":"~"
+        },
+        "editors/vim/.vim":{
+            "type":"directory",
+            "method":"copy",
+            "destination":"~",
+            "options":[
+                "--no-backup"
+            ]
+        },
+        "scm/git/.gitconfig":{
+            "type":"file",
+            "method":"copy",
+            "destination":"~"
+        }
+    }
+}
