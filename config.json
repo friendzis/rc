@@ -3,12 +3,12 @@
         "editors/vim/.vimrc":{
             "type":"file",
             "method":"link",
-            "destination":"~"
+            "destination":"~/.vimrc"
         },
         "editors/vim/.vim":{
             "type":"directory",
             "method":"copy",
-            "destination":"~",
+            "destination":"~/.vim/",
             "options":[
                 "--no-backup"
             ]
@@ -16,7 +16,7 @@
         "scm/git/.gitconfig":{
             "type":"file",
             "method":"copy",
-            "destination":"~"
+            "destination":"~/.gitconfig"
         }
     }
 }
