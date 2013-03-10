@@ -16,10 +16,12 @@ Options:
     --no-backup     Do not backup old files (force overwrite) (not implemented)
 """
 from docopt import docopt
+from subprocess import call
 import json
 
 arguments = docopt(__doc__)
 
+# If quiet mode is selected do not print status messages
 if arguments['-q']:
     def display(*args):
         return 0
@@ -32,10 +34,11 @@ class Entity:
         self.source = source
         self.destination = destination
 
+        # Checking if destination should be removed first
         if arguments['--no-backup'] or ('--no-backup' in options):
-            self.remove = True
+            self.backup = False
         else:
-            self.remove = False
+            self.backup = True
 
         if arguments['--copy']:
             self.method = "copy"
@@ -46,17 +49,24 @@ class Entity:
 
     def link(self):
         display("Linking %s --> %s" % (self.destination, self.source))
-        print("ln -s %s %s" % (self.source, self.destination))
+        self.remove()
+        #call("ln -s %s %s" % (self.source, self.destination))
+        call("ln -s %s %s" % (self.source, self.destination), shell=True)
 
     def copy(self):
         display("Copying %s to %s" % (self.source, self.destination))
+        self.remove()
 
     def remove(self):
-        if self.remove:
-            display("Removing %s..." % (self.destiantion))
-            print("rm -rf %s" % (self.destination))
+        if not self.backup:
+            display("Removing %s..." % (self.destination))
+            #call("rm -rf %s" % (self.destination))
+            call("rm -rf %s" % (self.destination), shell=True)
 
     def install(self):
+        # Basically this gets a function with the name defined in
+        # self self.method and happily executes it.
+        # Highly unsafe, must fix
         getattr(self, self.method)()        # This is black magic
 
 class File(Entity):
@@ -65,7 +75,8 @@ class File(Entity):
 
     def copy(self):
         super(File, self).copy()
-        print("cp %s %s" % (self.source, self.destination))
+        #call("cp %s %s" % (self.source, self.destination))
+        call("cp %s %s" % (self.source, self.destination), shell=True)
 
 class Directory(Entity):
     def __init__(self, source, destination, method, options):
@@ -73,15 +84,19 @@ class Directory(Entity):
 
     def copy(self):
         super(Directory, self).copy()
-        print("cp -r %s %s" % (self.source, self.destination))
+        #call("cp -r %s %s" % (self.source, self.destination))
+        call("cp -r %s %s" % (self.source, self.destination), shell=True)
 
 with open('config.json') as configFile:     # This closes the file automagically
     config = json.load(configFile)
 
 config = config["install"]      # We're only interested in Installation section
 
+# Step through all config entries
 for entry in config:
     Class = globals().get(config[entry]["type"].title(), False)
+    # If we know how to handle such case
     if Class:
+        # Use an improvised factory
         f = Class(entry, config[entry]["destination"], config[entry]["method"], config[entry].get("options", []))
         f.install()

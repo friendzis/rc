@@ -6,5 +6,10 @@ therefore they should be usable right away
 ### Installation
 
 *The installation script is not ready yet!*
-Currently the installer generates \*NIX shell commands that can be piped to `xargs`
+
+The script does have several security holes, but overall it is usable
+
 With proper `config.json` should work out-of-the-box
+
+  * Currently existance of a destination is not checked, therefore `--no-backup` flag must be used
+  * Default `config.json` is not complete yet. Named regions should be implemented
