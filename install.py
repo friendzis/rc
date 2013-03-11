@@ -87,6 +87,9 @@ class Directory(Entity):
         #call("cp -r %s %s" % (self.source, self.destination))
         call("cp -r %s %s" % (self.source, self.destination), shell=True)
 
+#class Xrdb(Entity):
+
+
 with open('config.json') as configFile:     # This closes the file automagically
     config = json.load(configFile)
 
