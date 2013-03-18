@@ -6,12 +6,6 @@
         "destination": "$HOME/.vimrc"
     },
     {
-        "type": "directory",
-        "method": "copy",
-        "source": "editors/vim/.vim",
-        "destination": "$HOME/.vim"
-    },
-    {
         "type": "file",
         "method": "copy",
         "source": "scm/git/.gitconfig",

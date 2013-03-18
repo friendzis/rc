@@ -1,19 +1,23 @@
-"""
-Usage:
-    dotstrap.py [-q] [--link | --copy] [--backup] [FILE] ...
+"""YADA - Yet Another Dotfile Assistant
 
-Process input FILEs and install dotfiles. If no input file is specified,
-recursively searches directory `bundle` for `config.json` and executes.
+Usage:
+    yada.py [-q] [--backup] [--link | --copy] bundle install [SECTION ...]
+    yada.py --version
+    yada.py -h | --help
+
+Examples:
+    yada.py bundle install laptop   # Search bundle for .yada files containing "laptop" section
 
 Arguments:
-    FILE            Optional file containing installation directives
+    SECTION         Optional argument(s) indicating which section(s) of .yada files to use
 
 Options:
-    -h --help       Display this help
-    -q              Be quiet (not implemented)
-    --link          Force linking (ln -s)
-    --copy          Force copying (cp)
+    -q              Be quiet
+    --link          Force linking (ignored with -d)
+    --copy          Force copying (ignored with -d)
     --backup        Backup old files  (not implemented)
+    -h --help       Display this help
+    --version       Show version
 """
 from docopt import docopt
 from subprocess import call
