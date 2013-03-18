@@ -1,56 +1,59 @@
 """
 Usage:
-    install.py [-q] [--link | --copy] [--no-backup] [FILE] ...
+    dotstrap.py [-q] [--link | --copy] [--backup] [FILE] ...
 
-Process input FILEs and install configuration files. By default reads
-"config.json"
+Process input FILEs and install dotfiles. If no input file is specified,
+recursively searches directory `bundle` for `config.json` and executes.
 
 Arguments:
-    FILE    Optional input file for installation paths
+    FILE            Optional file containing installation directives
 
 Options:
     -h --help       Display this help
     -q              Be quiet (not implemented)
     --link          Force linking (ln -s)
     --copy          Force copying (cp)
-    --no-backup     Do not backup old files (force overwrite) (not implemented)
+    --backup        Backup old files  (not implemented)
 """
 from docopt import docopt
 from subprocess import call
 import json
 
+import os
+from os.path import join, isdir
+
+HOME = os.getenv("HOME")
 arguments = docopt(__doc__)
 
 # If quiet mode is selected do not print status messages
 if arguments['-q']:
     def display(*args):
-        return 0
+         return 0
 else:
     def display(*args):
-        print(*args)
+         print(*args)
 
 class Entity:
-    def __init__(self, source, destination, method, options):
-        self.source = source
-        self.destination = destination
+    def __init__(self, entry):
+        self.source = entry["source"]
+        self.destination = entry["destination"]
 
         # Checking if destination should be removed first
-        if arguments['--no-backup'] or ('--no-backup' in options):
+        if arguments['--no-backup'] or ('--no-backup' in entry["options"]):
             self.backup = False
         else:
             self.backup = True
 
-        if arguments['--copy']:
-            self.method = "copy"
-        elif arguments['--link']:
-            self.method = "link"
-        else:
-            self.method = method    #Case when both are set is handled by docopt
+#        if arguments['--copy']:
+#            self.method = "copy"
+#        elif arguments['--link']:
+#            self.method = "link"
+#        else:
+#            self.method = method    #Case when both are set is handled by docopt
 
     def link(self):
         display("Linking %s --> %s" % (self.destination, self.source))
         self.remove()
-        #call("ln -s %s %s" % (self.source, self.destination))
         call("ln -s %s %s" % (self.source, self.destination), shell=True)
 
     def copy(self):
@@ -60,7 +63,6 @@ class Entity:
     def remove(self):
         if not self.backup:
             display("Removing %s..." % (self.destination))
-            #call("rm -rf %s" % (self.destination))
             call("rm -rf %s" % (self.destination), shell=True)
 
     def install(self):
@@ -70,36 +72,33 @@ class Entity:
         getattr(self, self.method)()        # This is black magic
 
 class File(Entity):
-    def __init__(self, source, destination, method, options):
-        super(File, self).__init__(source, destination, method, options)
+    def __init__(self, entry):
+        super(File, self).__init__(entry)
 
     def copy(self):
         super(File, self).copy()
-        #call("cp %s %s" % (self.source, self.destination))
         call("cp %s %s" % (self.source, self.destination), shell=True)
 
 class Directory(Entity):
-    def __init__(self, source, destination, method, options):
-        super(Directory, self).__init__(source, destination, method, options)
+    def __init__(self, entry):
+        super(Directory, self).__init__(entry)
 
     def copy(self):
         super(Directory, self).copy()
-        #call("cp -r %s %s" % (self.source, self.destination))
         call("cp -r %s %s" % (self.source, self.destination), shell=True)
 
 #class Xrdb(Entity):
 
-
 with open('config.json') as configFile:     # This closes the file automagically
     config = json.load(configFile)
 
-config = config["install"]      # We're only interested in Installation section
+#install = config["install"]      # We're only interested in Installation section
 
 # Step through all config entries
 for entry in config:
-    Class = globals().get(config[entry]["type"].title(), False)
+    Class = globals().get(entry['type'].title(), False)
     # If we know how to handle such case
     if Class:
         # Use an improvised factory
-        f = Class(entry, config[entry]["destination"], config[entry]["method"], config[entry].get("options", []))
-        f.install()
+        dotfile = Class(entry)
+        dotfile.install()
