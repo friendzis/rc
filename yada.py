@@ -27,6 +27,7 @@ import os
 from os.path import join, isdir
 
 HOME = os.getenv("HOME")
+CWD = os.getcwd()
 arguments = docopt(__doc__)
 
 # If quiet mode is selected do not print status messages
@@ -93,10 +94,11 @@ class Directory(Entity):
 
 #class Xrdb(Entity):
 
+plugin_path = join(CWD, 'plugins')
+for plugin
+
 with open('config.json') as configFile:     # This closes the file automagically
     config = json.load(configFile)
-
-#install = config["install"]      # We're only interested in Installation section
 
 # Step through all config entries
 for entry in config:

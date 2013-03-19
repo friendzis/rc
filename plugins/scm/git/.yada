@@ -1,12 +1,6 @@
 [
     {
         "type": "file",
-        "method": "link",
-        "source": "editors/vim/.vimrc",
-        "destination": "$HOME/.vimrc"
-    },
-    {
-        "type": "file",
         "method": "copy",
         "source": "scm/git/.gitconfig",
         "destination": "$HOME/.gitconfig"

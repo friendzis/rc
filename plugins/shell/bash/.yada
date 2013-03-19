@@ -1,0 +1,12 @@
+{
+    [
+        "type": "file",
+        "source": ".bashrc",
+        "method": "link"
+    ],
+    [
+        "type": "file",
+        "source": ".bash_profile",
+        "method": "link"
+    ]
+}
