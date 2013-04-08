@@ -1,8 +1,9 @@
-[
+
     {
         "type": "file",
         "method": "copy",
         "source": "scm/git/.gitconfig",
-        "destination": "$HOME/.gitconfig"
+        "destination": "$HOME/.gitconfig",
+        "section": "scm"
     }
 ]

@@ -22,21 +22,23 @@ Options:
 from docopt import docopt
 from subprocess import call
 import json
+import yaml
 
 import os
 from os.path import join, isdir
 
 HOME = os.getenv("HOME")
 CWD = os.getcwd()
+YADAFILE = '.yada'
 arguments = docopt(__doc__)
 
 # If quiet mode is selected do not print status messages
 if arguments['-q']:
-    def display(*args):
+    def display(*args, **kwargs):
          return 0
 else:
-    def display(*args):
-         print(*args)
+    def display(*args, **kwargs):
+         print(*args, **kwargs)
 
 class Entity:
     def __init__(self, entry):
@@ -94,17 +96,40 @@ class Directory(Entity):
 
 #class Xrdb(Entity):
 
-plugin_path = join(CWD, 'plugins')
-for plugin
+bundlePath = join (CWD, 'bundle')
 
-with open('config.json') as configFile:     # This closes the file automagically
-    config = json.load(configFile)
+def fetchBundle(path, plugins = []):
+    for inode in os.listdir(path):
+        inodePath = join(path, inode)
+        if inode == YADAFILE:
+            plugins.append(inodePath)
+            return plugins
+        elif isdir(inodePath):
+            fetchBundle(inodePath, plugins)
+    return plugins
+
+def fetchSections(bundle):
+    for bundleFragment in bundle:
+        #print(bundleFragment)
+        with open(bundleFragment) as fragment:
+        #with open('/usr/share/rc/bundle/scm/git/.yada') as fragment:
+            print(fragment)
+            config = json.load(fragment)
+            for entry in config:
+                section = entry.get("section", "*")
+                print(entry)
+
+bundle = fetchBundle(bundlePath)
+fetchSections(bundle)
+
+#with open('config.json') as configFile:     # This closes the file automagically
+#    config = json.load(configFile)
 
 # Step through all config entries
-for entry in config:
-    Class = globals().get(entry['type'].title(), False)
-    # If we know how to handle such case
-    if Class:
-        # Use an improvised factory
-        dotfile = Class(entry)
-        dotfile.install()
+#for entry in config:
+#    Class = globals().get(entry['type'].title(), False)
+#    # If we know how to handle such case
+#    if Class:
+#        # Use an improvised factory
+#        dotfile = Class(entry)
+#        dotfile.install()
