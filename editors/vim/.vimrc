@@ -10,7 +10,7 @@ set fileformats=unix,dos			" Unix line ends
 " *************************************************************************************************************************************
 " Interface settings
 "
-set number					" Display line numbers (renders klipper unusable)
+set number					" Display line numbers
 set history=20					" How many lines of command history to keep (do I need that at all?)
 set showmode					" Display current edit mode (if any)
 set showcmd					" Display command while it is being typed in
@@ -29,13 +29,15 @@ set showmatch					" Display maching brackets/braces
 set matchtime=20				" Time in ms to show actual match
 set textwidth=135				" Screw 80 col terminals, I have some screen real estate
 set colorcolumn=+1				" Highlight column # ${textwidth}+1
+set wrap                                        " Automatically wrap long lines
 
 " *************************************************************************************************************************************
 " Whitespace settings
 "
 set autoindent					" Keep indentation on <LF> (default behaviour for IDEs)
-set softtabstop=4				" Indent = 4 spaces (tab key)
-set softtabstop=4				" Indent = 4 spaces (autoindent)
+set tabstop=8                                   " <tab> is 8 spaces
+set softtabstop=3				" Indent = 3 spaces (tab key)
+set shiftwidth=3				" Indent = 3 spaces (autoindent)
 set expandtab					" Tabs are always all-spaces
 
 " *************************************************************************************************************************************
