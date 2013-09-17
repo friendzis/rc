@@ -1,0 +1,2 @@
+## %group hostname=(runas) command1, command1
+## username hostname=(runas) NOPASSWD:command1, command1

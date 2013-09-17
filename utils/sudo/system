@@ -1,0 +1,5 @@
+%sysadmin	ALL=(ALL) NOPASSWD:/usr/bin/systemctl
+%sysadmin	ALL=(ALL) NOPASSWD:/bin/mount
+%sysadmin	ALL=(ALL) NOPASSWD:/bin/umount
+friendzis	ALL=(ALL) /bin/kill
+
