@@ -1,2 +1,2 @@
-%admin	ALL=(ALL) NOPASSWD:/sbin/reboot
-%admin	ALL=(ALL) NOPASSWD:/sbin/shutdown
+%admin   DESKTOP=(ALL) NOPASSWD:/sbin/reboot
+%admin   DESKTOP=(ALL) NOPASSWD:/sbin/shutdown
