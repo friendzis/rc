@@ -1,0 +1,13 @@
+URxvt.scrollBar: false
+URxvt.transparent: true
+URxvt.background: [80]#000000
+URxvt.foreground: #BBFFBB
+
+URxvt.cursorBlink: true
+
+URxvt.perl-ext-common: default, tabbed
+
+URxvt.perl-ext: default, url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
+URxvt.url-select.launcher: /usr/bin/chromium
